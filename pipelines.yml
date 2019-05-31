@@ -22,7 +22,7 @@ resources:
   - name: myVmCluster
     type: cluster
     configuration:
-       integrationName: manishas_sshKey
+       integrationName: manishas_sshkey
     version: 
       targetCount: 2
       targetIP01: 1.2.3.4
@@ -34,7 +34,7 @@ resources:
       integrationName: manishas_kube
       bastionHostIP: 1.2.3.4
       bastionUser: sshUser
-      bastionIntegrationName: manishas_sshKey
+      bastionIntegrationName: manishas_sshkey
  
   - name: myFile
     type: file
