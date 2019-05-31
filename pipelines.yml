@@ -1,0 +1,82 @@
+
+resources:
+  - name: app2
+    type: gitRepo
+    repoPath: manishas/app
+    configuration:
+      integrationName: manishas_github
+      branches:
+        only: master
+    version:
+      sha: master
+
+  - name: myDockerImg1
+    type: image
+    imageName: demo/app
+    configuration:
+      integrationName: artDocker
+      autoPull: false
+    version:
+      imageTag: latest
+    
+  - name: myVmCluster
+    type: cluster
+    configuration:
+       integrationName: manishas_sshKey
+    version: 
+      targetCount: 2
+      targetIP01: 1.2.3.4
+      targetIP02: 2.3.4.5
+
+  - name: myKubeCluster
+    type: cluster
+    configuration:
+      integrationName: manishas_kube
+      bastionHostIP: 1.2.3.4
+      bastionUser: sshUser
+      bastionIntegrationName: manishas_sshKey
+ 
+  - name: myFile
+    type: file
+    configuration:      
+      integrationName: ranjan_files 
+      fileLocation: .
+    version:
+     fileName: my.txt
+  
+  - name: myWebhook
+    type: webhook
+    configuration:
+      integrationName: varsha_internalWebhook
+    version:
+      payload: "this is latest payload"
+
+ 
+pipelines:
+  - name: test_pipeline
+    steps:
+      - name: build
+        type: bash
+        triggeredBy:
+          resources:
+            - app2
+        requires:
+          resources:
+            - myDockerImg1
+            - myVmCluster
+            - myKubeCluster
+            - myFile
+            - myWebhook
+          integrations:
+            - notifySlack
+        execution:
+          onExecute:
+            - printenv
+            #- pushd $res_app1_resourcePath
+            #- docker build -t app1:$STEP_ID .
+            #- write_output myDockerImg "imageTag="$STEP_ID
+            #- add_run_variable imageName=$res_myDockerImg_imageName
+            #- add_run_variable imageTag=$STEP_ID
+            #- add_pipeline_variable intName=$res_myDockerImg_integrationName
+            #- add_pipeline_variable pullSetting=$res_myDockerImg_autoPull
+ 
