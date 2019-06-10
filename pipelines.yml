@@ -4,7 +4,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: manishas_github
-      path: manishas/app      
+      path: manishas/app
       branches:
         include: master
 
@@ -15,7 +15,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - app2
+            - name: app2
         execution:
           onExecute:
             - printenv
@@ -24,7 +24,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - step_1
+            - name: step_1
         execution:
           onExecute:
             - printenv
@@ -33,7 +33,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - step_1
+            - name: step_1
         execution:
           onExecute:
             - printenv
@@ -42,8 +42,8 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - step_2
-            - step_3
+            - name: step_2
+            - name: step_3
         execution:
           onExecute:
             - printenv
