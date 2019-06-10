@@ -29,21 +29,21 @@ pipelines:
           onExecute:
             - printenv
 
-     - name: step_3
-       type: Bash
-       configuration:
-         inputSteps:
-           - step_1
-       execution:
-         onExecute:
-           - printenv
+      - name: step_3
+        type: Bash
+        configuration:
+          inputSteps:
+            - step_1
+        execution:
+          onExecute:
+            - printenv
 
-     - name: step_4
-       type: Bash:
-       configuration:
-         inputSteps:
-           - step_2
-           - step_3
-       execution:
-         onExecute:
-           - printenv
+      - name: step_4
+        type: Bash
+        configuration:
+          inputSteps:
+            - step_2
+            - step_3
+        execution:
+          onExecute:
+            - printenv
