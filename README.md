@@ -1,1 +1,1 @@
-# test_resources
+# kermit_barebones_pipeline
