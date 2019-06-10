@@ -2,9 +2,9 @@
 resources:
   - name: app2
     type: GitRepo
-    repoPath: manishas/app
     configuration:
       gitProvider: manishas_github
+      path: manishas/app      
       branches:
         include: master
 
