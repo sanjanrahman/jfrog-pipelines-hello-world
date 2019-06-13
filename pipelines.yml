@@ -14,6 +14,7 @@ pipelines:
       - name: step_1
         type: Bash
         configuration:
+          nodePool: kermit_centos_pool
           inputResources:
             - name: app2
         execution:
@@ -23,6 +24,7 @@ pipelines:
       - name: step_2
         type: Bash
         configuration:
+          nodePool: kermit_centos_pool
           inputSteps:
             - name: step_1
         execution:
@@ -32,6 +34,7 @@ pipelines:
       - name: step_3
         type: Bash
         configuration:
+          nodePool: kermit_centos_pool
           inputSteps:
             - name: step_1
         execution:
@@ -41,6 +44,7 @@ pipelines:
       - name: step_4
         type: Bash
         configuration:
+          nodePool: kermit_centos_pool
           inputSteps:
             - name: step_2
             - name: step_3
