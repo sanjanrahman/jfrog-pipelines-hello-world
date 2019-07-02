@@ -19,7 +19,8 @@ pipelines:
             image:
               auto:
                 language: nodejs
-                versions: 10.15
+                versions:
+                  - 10.15
           inputResources:
             - name: app2
         execution:
