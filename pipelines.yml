@@ -14,6 +14,12 @@ pipelines:
       - name: step_1
         type: Bash
         configuration:
+          runtime:
+            type: image
+            image:
+              auto:
+                language: nodejs
+                versions: 10.15
           inputResources:
             - name: app2
         execution:
@@ -58,7 +64,7 @@ pipelines:
             type: image
             image:
               auto:
-                language: go             
+                language: go
         execution:
           onExecute:
             - printenv
