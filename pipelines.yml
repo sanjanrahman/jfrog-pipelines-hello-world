@@ -1,6 +1,6 @@
 
 resources:
-  - name: app2
+  - name: myAppRepo
     type: GitRepo
     configuration:
       gitProvider: manishas_github
@@ -14,46 +14,33 @@ pipelines:
       - name: step_1
         type: Bash
         configuration:
-          runtime:
-            type: image
-            image:
-              auto:
-                language: nodejs
-                versions:
-                  - "10.15.3"
           inputResources:
-            - name: app2
+            - name: myAppRepo
         execution:
           onExecute:
             - printenv
+            - echo $res_myAppRepo_commitSha
+            - add_run_variables first_stepid=$step_id
 
       - name: step_2
         type: Bash
         configuration:
           inputSteps:
             - name: step_1
-          runtime:
-            type: image
-            image:
-              auto:
-                language: java
         execution:
           onExecute:
-            - printenv
+            - echo "Hello world"
+            - echo $first_stepid
 
       - name: step_3
         type: Bash
         configuration:
           inputSteps:
             - name: step_1
-          runtime:
-            type: image
-            image:
-              auto:
-                language: nodejs
         execution:
           onExecute:
-            - printenv
+            - echo "Hello world"
+            - echo $first_stepid
 
       - name: step_4
         type: Bash
@@ -61,11 +48,7 @@ pipelines:
           inputSteps:
             - name: step_2
             - name: step_3
-          runtime:
-            type: image
-            image:
-              auto:
-                language: go
         execution:
           onExecute:
+            - echo $first_stepid
             - printenv
