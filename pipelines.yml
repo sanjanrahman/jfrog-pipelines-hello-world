@@ -20,7 +20,7 @@ pipelines:
               auto:
                 language: nodejs
                 versions:
-                  - "10.16.3"
+                  - "10.15.3"
           inputResources:
             - name: app2
         execution:
