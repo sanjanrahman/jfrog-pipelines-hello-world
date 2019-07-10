@@ -20,7 +20,7 @@ pipelines:
           onExecute:
             - printenv
             - echo $res_myAppRepo_commitSha
-            - add_run_variable first_stepid=$step_id
+            - add_run_variables first_stepid=$step_id
             - echo "Hello world" echo "this is multiple commands"
 
       - name: step_2
