@@ -36,19 +36,10 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: step_1
+            - name: step_2
         execution:
           onExecute:
             - echo "Hello world"
             - echo $first_stepid
 
-      - name: step_4
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: step_2
-            - name: step_3
-        execution:
-          onExecute:
-            - echo $first_stepid
-            - printenv
+
