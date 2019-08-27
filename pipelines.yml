@@ -36,7 +36,7 @@ pipelines:
       - name: step_2
         type: Bash
         configuration:
-          inputResourcess:
+          inputResources:
             - name: myImage
         execution:
           onExecute:
