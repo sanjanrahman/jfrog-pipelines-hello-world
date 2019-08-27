@@ -9,12 +9,12 @@ resources:
         include: master
         
   - name: myImage
-     type: Image
-     configuration:
-       registry: dockerHub
-       imageName: manishas/myimage
-       imageTag: latest
-       autoPull: false        
+    type: Image
+    configuration:
+      registry: dockerHub
+      imageName: manishas/myimage
+      imageTag: latest
+      autoPull: false        
 
 pipelines:
   - name: barebones_pipeline
