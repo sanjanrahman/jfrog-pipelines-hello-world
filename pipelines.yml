@@ -7,6 +7,14 @@ resources:
       path: manishas/app    # replace with your repository name
       branches:
         include: master
+        
+  - name: myImage
+     type: Image
+     configuration:
+       registry: dockerHub
+       imageName: manishas/myimage
+       imageTag: latest
+       autoPull: false        
 
 pipelines:
   - name: barebones_pipeline
@@ -16,21 +24,27 @@ pipelines:
         configuration:
           inputResources:
             - name: myAppRepo
+          outputResources:
+            - name: myImage
         execution:
           onExecute:
             - printenv
             - echo $res_myAppRepo_commitSha
             - add_run_variables first_stepid=$step_id
+            - write_output myImage "imageTag=master" "sha=$commitSha" "description=\"hello world\""
 
       - name: step_2
         type: Bash
         configuration:
-          inputSteps:
-            - name: step_1
+          inputResourcess:
+            - name: myImage
         execution:
           onExecute:
             - echo "Hello world"
             - echo $first_stepid
+            - echo $res_myImage_imageTag
+            - echo $res_myImage_sha            
+            - echo $res_myImage_description
 
       - name: step_3
         type: Bash
