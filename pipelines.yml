@@ -11,8 +11,8 @@ resources:
   - name: myImage
     type: Image
     configuration:
-      registry: dockerHub
-      imageName: manishas/myimage
+      registry: ms_dh
+      imageName: manishas/nightlyimage
       imageTag: latest
       autoPull: false        
 
