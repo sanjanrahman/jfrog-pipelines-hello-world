@@ -1,5 +1,5 @@
 resources:
-  - name: myAppRepo
+  - name: MyGitHub
     type: GitRepo
     configuration:
       gitProvider: sanjanrahman_github   # replace with your integration  
